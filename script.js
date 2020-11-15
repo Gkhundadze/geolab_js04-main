@@ -31,7 +31,9 @@ const ul = document.querySelector('ul');
         ul.appendChild(listItem);
 
         deleteBtn.addEventListener('click', () => {
+          if (checkbox.checked) {taskCounter--};
           ul.removeChild(listItem);
+          completedTasks.textContent = taskCounter;
         });
 
         input.value = '';
