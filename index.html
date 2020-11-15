@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <title>Shopping list example</title>
     <style>
+      ul{
+        list-style-type: none;
+      }
       li {
         margin-bottom: 10px;
       }
@@ -30,34 +33,6 @@
 
     </ul>
 
-    <script>
-      const ul = document.querySelector('ul');
-      const input = document.querySelector('input');
-      const button = document.querySelector('button');
-      const form = document.querySelector('form');
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        let myItem = input.value;
-
-        const listItem = document.createElement('li');
-        const listText = document.createElement('span');
-        const deleteBtn = document.createElement('button');
-
-        listItem.appendChild(listText);
-        listText.textContent = myItem;
-        listItem.appendChild(deleteBtn);
-        deleteBtn.textContent = 'Delete';
-        ul.appendChild(listItem);
-
-        deleteBtn.addEventListener('click', () => {
-          ul.removeChild(listItem);
-        })
-
-        input.value = '';
-        input.focus();
-      })
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
