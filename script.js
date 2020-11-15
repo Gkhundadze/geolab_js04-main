@@ -32,7 +32,7 @@ const ul = document.querySelector('ul');
 
         deleteBtn.addEventListener('click', () => {
           ul.removeChild(listItem);
-        })
+        });
 
         input.value = '';
         input.focus();
@@ -47,7 +47,6 @@ const ul = document.querySelector('ul');
                 taskCounter ++;
                 completedTasks.textContent = taskCounter;
                 completedTasks.style.color = "green";
-
             }else{
                 listText.style.textDecoration = "none";
                 listText.style.backgroundColor = "transparent";
