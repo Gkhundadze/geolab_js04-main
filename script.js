@@ -26,7 +26,7 @@ const ul = document.querySelector('ul');
         input.value = '';
         input.focus();
 
-        checkbox.onclick = function (){
+        checkbox.onchange = function (){
             if(checkbox.checked){
                 listText.style.textDecoration = "line-through";
                 listText.style.backgroundColor = "#7dc07d";
