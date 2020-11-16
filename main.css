@@ -28,3 +28,10 @@ li button {
     align-items: flex-end;
     font-weight: bold;
 }
+.btn-box .clearBtn{
+    font-size: medium;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding: 3px 5px;
+}
