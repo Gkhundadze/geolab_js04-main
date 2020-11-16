@@ -59,10 +59,8 @@ form.addEventListener('submit', (e) => {
     clearBtn.style.display = "none";
     });
     // Clear Button  
-  }else{
+    }else{
     alert("შეიყვანეთ პროდუქტი სიაში დასამატებლად");
   }
-  
 });
-      
-
+  

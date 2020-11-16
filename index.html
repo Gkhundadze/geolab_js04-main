@@ -7,26 +7,25 @@
     <title>Shopping list example</title>
   </head>
   <body>
-
-    <h1>My Tasks</h1>
-
-    <div>
-      <form action="">
-        <input type="text" name="item" id="item">
-        <button type="submit">Add item</button>
-      </form>
+    <div class="container">
+      <div class="app">
+        <h1>ჩემი სია</h1>
+        <div>
+          <form action="">
+            <input type="text" name="item" id="item">
+            <button type="submit">Add item</button>
+          </form>
+        </div>
+        <ul>
+        </ul>
+        <div class="btn-box">
+        <button type="button" class="clearBtn">ყველას წაშლა</button>
+        </div>
+        <div class="infoBox">
+        <span class="info">სულ შესრულებულია :<span class="counter"></span> დავალება</span>
+        </div>
+      </div>
     </div>
-
-    <ul>
-
-    </ul>
-    <div class="btn-box">
-      <button type="button" class="clearBtn">ყველას წაშლა</button>
-    </div>
-    <div class="infoBox">
-      <span class="info">სულ შესრულებულია :<span class="counter"></span> დავალება</span>
-      
-    </div>
-    <script src="script.js"></script>
+  <script src="script.js"></script>
   </body>
 </html>

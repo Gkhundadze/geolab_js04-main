@@ -1,12 +1,41 @@
-
+/* RESET */
 *{
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
+/* RESET */
+
+/* fonts */
+@font-face{
+    font-family: "3dunicode";
+    src: url(fonts/3d_unicode.ttf);
+}
+/* fonts */
+
+
 body{
     background-color: aliceblue;
     height: 100%;
 }
+.container{
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+}
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    font-family: "3dunicode";
+    margin: 5% 0;
+}
 ul{
+    margin: 5% 0;
     list-style-type: none;
     max-height: 500px;
     height: 100%;
