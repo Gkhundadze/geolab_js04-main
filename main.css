@@ -4,6 +4,7 @@
 }
 body{
     background-color: aliceblue;
+    height: 100%;
 }
 ul{
     list-style-type: none;
@@ -27,6 +28,10 @@ li button {
     justify-content: center;
     align-items: flex-end;
     font-weight: bold;
+}
+.btn-box{
+    display: flex;
+    justify-content: flex-end;
 }
 .btn-box .clearBtn{
     font-size: medium;
