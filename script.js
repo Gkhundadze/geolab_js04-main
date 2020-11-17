@@ -18,8 +18,10 @@ form.addEventListener('submit', (e) => {
     const listItem = document.createElement('li');
     const listText = document.createElement('span');
     const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add("btn", "btn-secondary", "btn-sm")
     checkbox.setAttribute("type", "checkbox");
-    listItem.appendChild(checkbox)
+    checkbox.classList.add('checkbox')
+    listItem.appendChild(checkbox);
     listItem.appendChild(listText);
     listText.textContent = myItem;
     listItem.appendChild(deleteBtn);
