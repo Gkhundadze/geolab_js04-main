@@ -1,68 +1,52 @@
-const ul = document.querySelector('ul');
-const input = document.querySelector('input');
-const button = document.querySelector('button');
-const form = document.querySelector('form');
-const infoBox = document.querySelector(".infobox");
-var completedTasks = document.querySelector(".counter");
-var taskCounter = 0;
-completedTasks.textContent = taskCounter;
-completedTasks.style.color = "red";
-completedTasks.style.fontSize = `${24}px`;
-var clearBtn = document.querySelector(".clearBtn");
-clearBtn.style.display = "none";
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  let myItem = input.value;
-  if (myItem !== "") { 
-    const checkbox = document.createElement('input');
-    const listItem = document.createElement('li');
-    const listText = document.createElement('span');
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add("btn", "btn-secondary", "btn-sm")
-    checkbox.setAttribute("type", "checkbox");
-    checkbox.classList.add('checkbox')
-    listItem.appendChild(checkbox);
-    listItem.appendChild(listText);
-    listText.textContent = myItem;
-    listItem.appendChild(deleteBtn);
-    deleteBtn.textContent = 'Delete';
-    ul.appendChild(listItem);
-    deleteBtn.addEventListener('click', () => {
-      if (checkbox.checked) {taskCounter--};
-      ul.removeChild(listItem);
-      completedTasks.textContent = taskCounter;
+// VARIABLES
+  const ul = document.querySelector('ul');
+  const input = document.querySelector('input');
+  const submitBtn = document.querySelector('#submit');
+  const form = document.querySelector('form');
+  const listItem = document.createElement('li');
+  const listText = document.createElement('span');
+  const deleteBtn = document.createElement('button');
+  const checkbox = document.createElement('input');
+  
+  
+  
+  
+  
+  
+  
+  fetch('https://us-central1-js04-b4877.cloudfunctions.net/tasks',{
+    method: "GET"
+  })
+  .then(response => response.json())
+  .then(data => {
+    let taskList = data.data
+    taskList.forEach(task => {
+      const listItem = document.createElement('li');
+      const listText = document.createElement('span');
+      const deleteBtn = document.createElement('button');
+      const checkbox = document.createElement('input');
+      checkbox.setAttribute('type', 'checkbox');
+        listItem.appendChild(checkbox);
+        listItem.appendChild(listText);
+        listText.textContent = task.text;
+        listItem.appendChild(deleteBtn);
+        deleteBtn.textContent = 'Delete';
+        ul.appendChild(listItem);
+        
+        // STYLING
+        ul.style.listStyleType = "none"
+        deleteBtn.classList.add("btn", "btn-secondary", "btn-sm")
+
     });
-    input.value = '';
-    input.focus();
-      checkbox.onchange = function (){
-      if(checkbox.checked){
-          listText.style.textDecoration = "line-through";
-          listText.style.backgroundColor = "#7dc07d";
-          listText.style.letterSpacing = 4 + "px";
-          listText.style.fontWeight = "bold";
-          taskCounter ++;
-          completedTasks.textContent = taskCounter;
-          completedTasks.style.color = "green";
-      }else{
-          listText.style.textDecoration = "none";
-          listText.style.backgroundColor = "transparent";
-          listText.style.letterSpacing = 1 + "px";
-          listText.style.fontWeight = "normal";
-          taskCounter --;
-          completedTasks.textContent = taskCounter;
-      }
-    }
-    // Clear Button
-    clearBtn.style.display = "block";
-    clearBtn.addEventListener("click", () => {
-    listItem.style.display = "none";
-    taskCounter = 0;
-    completedTasks.textContent = taskCounter;
-    clearBtn.style.display = "none";
-    });
-    // Clear Button  
-    }else{
-    alert("შეიყვანეთ პროდუქტი სიაში დასამატებლად");
-  }
-});
+    // console.log()
+    
+  })
+ 
+ 
+  
+  
+  
+  
+  
+ 
   
