@@ -7,14 +7,25 @@
   const listText = document.createElement('span');
   const deleteBtn = document.createElement('button');
   const checkbox = document.createElement('input');
+  const receiveData = 'https://us-central1-js04-b4877.cloudfunctions.net/tasks';
+  const addData = "https://us-central1-js04-b4877.cloudfunctions.net/tasks/create";
+  
+  // STYLING
+  ul.style.listStyleType = "none"
+  deleteBtn.classList.add("btn", "btn-secondary", "btn-sm");
+  
+  checkData(receiveData);
+  form.addEventListener("submit",(fun) => {
+    fun.preventDefault();
+    let inputValue = input.value;
+    createTask(inputValue);
+    checkData(receiveData);
+  });
   
   
   
-  
-  
-  
-  
-  fetch('https://us-central1-js04-b4877.cloudfunctions.net/tasks',{
+  function checkData(url){
+    fetch(receiveData,{
     method: "GET"
   })
   .then(response => response.json())
@@ -38,15 +49,35 @@
         deleteBtn.classList.add("btn", "btn-secondary", "btn-sm")
 
     });
-    // console.log()
-    
+  });
+  };
+  function createTask(inputValue){
+    fetch(addData,{
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+      body: JSON.stringify({text: inputValue})
   })
- 
- 
-  
-  
-  
-  
-  
- 
-  
+  .then(response => response.json())
+  .then(data => {
+    input.value = '';
+    input.focus();
+    dataToHTM(data);
+  });
+}
+function dataToHTML(text){
+  taskList.forEach(task => {
+    const listItem = document.createElement('li');
+    const listText = document.createElement('span');
+    const deleteBtn = document.createElement('button');
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+      listItem.appendChild(checkbox);
+      listItem.appendChild(listText);
+      listText.textContent = task.text;
+      listItem.appendChild(deleteBtn);
+      deleteBtn.textContent = 'Delete';
+      ul.appendChild(listItem);
+  });
+};
