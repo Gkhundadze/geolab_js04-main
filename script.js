@@ -5,7 +5,8 @@
   const form = document.querySelector('form');
   const receiveData = 'https://us-central1-js04-b4877.cloudfunctions.net/tasks';
   const addData = "https://us-central1-js04-b4877.cloudfunctions.net/tasks/create";
-
+  const taskCounter = document.querySelector(".counter");
+  let checkedTasks = 0;
   
 checkData(receiveData);
 form.addEventListener("submit",(event) => {
@@ -43,6 +44,7 @@ function checkData(url){
     listItem.appendChild(deleteBtn);
     deleteBtn.textContent = 'Delete';
     ul.appendChild(listItem);
+    taskCounter.textContent = checkedTasks;
     deleteBtn.addEventListener('click', () => {
       ul.removeChild(listItem);
       deleteTask(receiveData, task.id);
@@ -54,17 +56,17 @@ function checkData(url){
         listText.style.backgroundColor = "#7dc07d";
         listText.style.letterSpacing = 4 + "px";
         listText.style.fontWeight = "bold";
+        checkedTasks ++;
+        taskCounter.textContent = checkedTasks;
     }else{
       listText.style.textDecoration = "none";
       listText.style.backgroundColor = "transparent";
       listText.style.letterSpacing = 1 + "px";
       listText.style.fontWeight = "normal";
+      checkedTasks --;
+      taskCounter.textContent = checkedTasks;
     }
-    }
-    
-
-      
-      
+  }
       // STYLING
       ul.style.listStyleType = "none"
       deleteBtn.classList.add("btn", "btn-secondary", "btn-sm")
@@ -94,6 +96,7 @@ function checkData(url){
       listItem.appendChild(deleteBtn);
       deleteBtn.textContent = 'Delete';
       ul.appendChild(listItem);
+      taskCounter.textContent = checkedTasks;
       deleteBtn.addEventListener('click', () => {
         ul.removeChild(listItem);
         deleteTask(receiveData, data.id);
@@ -104,11 +107,15 @@ function checkData(url){
           listText.style.backgroundColor = "#7dc07d";
           listText.style.letterSpacing = 4 + "px";
           listText.style.fontWeight = "bold";
+          checkedTasks ++;
+          taskCounter.textContent = checkedTasks;
       }else{
         listText.style.textDecoration = "none";
         listText.style.backgroundColor = "transparent";
         listText.style.letterSpacing = 1 + "px";
         listText.style.fontWeight = "normal";
+        checkedTasks --;
+        taskCounter.textContent = checkedTasks;
       }
     }
       
@@ -124,4 +131,6 @@ function deleteTask(url,id){
   fetch(deleteUrl,{
     method: "DELETE"
   })
+  checkedTasks --;
+  taskCounter.textContent = checkedTasks;
 }
