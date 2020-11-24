@@ -36,6 +36,7 @@ function checkData(url){
     const deleteBtn = document.createElement('button');
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
+    listItem.setAttribute('data-id', task.id);
     checkbox.checked = status;
     listItem.appendChild(checkbox);
     listItem.appendChild(listText);
@@ -43,6 +44,9 @@ function checkData(url){
     listItem.appendChild(deleteBtn);
     deleteBtn.textContent = 'Delete';
     ul.appendChild(listItem);
+    deleteBtn.addEventListener('click', () => {
+      ul.removeChild(listItem);
+    });
     checkbox.onchange = ()=>{
       if(checkbox.checked){
         listText.style.textDecoration = "line-through";
@@ -82,6 +86,9 @@ function checkData(url){
     const deleteBtn = document.createElement('button');
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
+    listItem.setAttribute('data-id', data.id);
+    console.log(data.id)
+
     listItem.appendChild(checkbox);
       listItem.appendChild(listText);
       listText.textContent = input.value;
