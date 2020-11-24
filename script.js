@@ -88,18 +88,18 @@ function checkData(url){
       listItem.appendChild(deleteBtn);
       deleteBtn.textContent = 'Delete';
       ul.appendChild(listItem);
-    checkbox.onchange = ()=>{
-      if(checkbox.checked){
-        listText.style.textDecoration = "line-through";
-        listText.style.backgroundColor = "#7dc07d";
-        listText.style.letterSpacing = 4 + "px";
-        listText.style.fontWeight = "bold";
-    }else{
-      listText.style.textDecoration = "none";
-      listText.style.backgroundColor = "transparent";
-      listText.style.letterSpacing = 1 + "px";
-      listText.style.fontWeight = "normal";
-    }
+      checkbox.onchange = ()=>{
+        if(checkbox.checked){
+          listText.style.textDecoration = "line-through";
+          listText.style.backgroundColor = "#7dc07d";
+          listText.style.letterSpacing = 4 + "px";
+          listText.style.fontWeight = "bold";
+      }else{
+        listText.style.textDecoration = "none";
+        listText.style.backgroundColor = "transparent";
+        listText.style.letterSpacing = 1 + "px";
+        listText.style.fontWeight = "normal";
+      }
     }
       
       // STYLING
