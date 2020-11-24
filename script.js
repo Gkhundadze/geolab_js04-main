@@ -13,7 +13,6 @@ form.addEventListener("submit",(event) => {
   const inputValue = input.value;
   if(!inputValue == ""){
     createTask(inputValue);
-    
   }else{
     alert("შეიყვანეთ დასახელება")
   }
@@ -46,6 +45,8 @@ function checkData(url){
     ul.appendChild(listItem);
     deleteBtn.addEventListener('click', () => {
       ul.removeChild(listItem);
+      deleteTask(receiveData, task.id);
+      console.log(task.id)
     });
     checkbox.onchange = ()=>{
       if(checkbox.checked){
@@ -87,14 +88,16 @@ function checkData(url){
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     listItem.setAttribute('data-id', data.id);
-    console.log(data.id)
-
     listItem.appendChild(checkbox);
       listItem.appendChild(listText);
       listText.textContent = input.value;
       listItem.appendChild(deleteBtn);
       deleteBtn.textContent = 'Delete';
       ul.appendChild(listItem);
+      deleteBtn.addEventListener('click', () => {
+        ul.removeChild(listItem);
+        deleteTask(receiveData, data.id);
+      });
       checkbox.onchange = ()=>{
         if(checkbox.checked){
           listText.style.textDecoration = "line-through";
@@ -115,4 +118,10 @@ function checkData(url){
     input.value = '';
     input.focus();
   });
+}
+function deleteTask(url,id){
+  let deleteUrl = url + "/" + id;
+  fetch(deleteUrl,{
+    method: "DELETE"
+  })
 }
