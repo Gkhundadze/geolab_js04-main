@@ -48,7 +48,6 @@ function checkData(url){
     deleteBtn.addEventListener('click', () => {
       ul.removeChild(listItem);
       deleteTask(receiveData, task.id);
-      console.log(task.id)
     });
     checkbox.onchange = ()=>{
       if(checkbox.checked){
